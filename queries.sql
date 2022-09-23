@@ -32,3 +32,8 @@ SELECT animal_name FROM animals INNER JOIN species ON animals.species_id = speci
 SELECT species.name, COUNT(animals.animal_name) FROM animals INNER JOIN species ON animals.species_id = species_id GROUP BY species.name;
 SELECT animals.animal_name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Jennifer Orwell';
 SELECT owners.full_name, COUNT(animals.animal_name) FROM owners LEFT JOIN animals ON owners.id = animals.owner_id GROUP BY owners.full_name ORDER BY COUNT(animals.animal_name) DESC;
+SELECT animals.animal_name FROM animals INNER JOIN visits ON visits.animal_name = animals.animal_name WHERE visits.name = 'William Tatcher' ORDER BY date_of_visit DESC LIMIT 1;
+SELECT COUNT(animals.animal_name) FROM animals INNER JOIN visits ON visits.animal_name = animals.animal_name WHERE visits.name = 'Stephanie Mendez' ;
+SELECT animals.animal_name FROM animals INNER JOIN visits ON visits.animal_name = animals.animal_name WHERE visits.name = 'Stephanie Mendez' AND visits.date_of_visit BETWEEN '2020-04-01' AND '2020-08-30';
+SELECT animals.animal_name FROM animals INNER JOIN visits ON visits.animal_name = animals.animal_name WHERE visits.name = 'Maisy Smith' ORDER BY visits.date_of_visit ASC LIMIT 1;
+SELECT COUNT(visits.animal_name), specialities.vet_name FROM visits JOIN animals ON visits.animal_name = animals.animal_name JOIN specialities ON animals.species_id = specialities.species_id WHERE visits.name = 'Maisy Smith' GROUP BY specialities.vet_name ORDER BY COUNT (animals.animal_name) DESC LIMIT 1;
