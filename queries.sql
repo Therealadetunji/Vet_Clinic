@@ -26,3 +26,9 @@ SELECT MIN(weight_kg) FROM animals WHERE species LIKE '%poke%';
 SELECT MAX(weight_kg) FROM animals WHERE species LIKE '%poke%';
 SELECT MIN(weight_kg) FROM animals WHERE species LIKE '%digi%';
 SELECT MAX(weight_kg) FROM animals WHERE species LIKE '%digi%';
+
+SELECT animal_name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Melody Pond';
+SELECT animal_name FROM animals INNER JOIN species ON animals.species_id = species.id WHERE species.name ='Pokemon';
+SELECT species.name, COUNT(animals.animal_name) FROM animals INNER JOIN species ON animals.species_id = species_id GROUP BY species.name;
+SELECT animals.animal_name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Jennifer Orwell';
+SELECT owners.full_name, COUNT(animals.animal_name) FROM owners LEFT JOIN animals ON owners.id = animals.owner_id GROUP BY owners.full_name ORDER BY COUNT(animals.animal_name) DESC;
